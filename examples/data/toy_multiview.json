@@ -1,0 +1,10 @@
+[
+  {
+    "id": "toy_multiview_0",
+    "images": ["toy_media/views/view_0.jpg", "toy_media/views/view_1.jpg", "toy_media/views/view_2.jpg"],
+    "conversations": [
+      {"from": "human", "value": "<image>\n<image>\n<image>\nHow many views of the scene are shown? Answer with a single number."},
+      {"from": "gpt", "value": "3"}
+    ]
+  }
+]

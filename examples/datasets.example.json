@@ -1,0 +1,4 @@
+{
+  "toy_video": {"annotation_path": "data/toy_video.json", "data_path": ".", "tag": "3d"},
+  "toy_multiview": {"annotation_path": "data/toy_multiview.json", "data_path": ".", "tag": "3d"}
+}

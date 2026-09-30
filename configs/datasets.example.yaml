@@ -1,0 +1,26 @@
+# Dataset registry template for `--dataset_config`. Copy it, point DATA_ROOT at your data and keep the
+# entries you have. Annotation files are not distributed with this repository; see docs/DATA.md.
+#
+#   <name>:
+#     annotation_path: JSON list or JSONL of records (schema: docs/DATA.md)
+#     data_path:       root for the relative `images` / `video` paths in the records
+#     tag:             3d or 2d. Only used by --group_by_modality_length (batches never mix tags).
+#
+# Relative paths are resolved against this file's directory; ${VARS} are expanded.
+# Select datasets with e.g. --dataset_use "spar_234k,llava_hound_64k,mllm4d%50".
+
+# Spatial reasoning. Render SPAR point/box markers into the images during preprocessing and remove
+# the `spar_info` field from the annotations (docs/DATA.md).
+spar_234k:        {annotation_path: "${DATA_ROOT}/train/spar_234k.json",        data_path: "${DATA_ROOT}/media", tag: 3d}
+vlm3r_vsi_205k:   {annotation_path: "${DATA_ROOT}/train/vlm3r_vsi_205k.json",   data_path: "${DATA_ROOT}/media", tag: 2d}
+vlm3r_vst_132k:   {annotation_path: "${DATA_ROOT}/train/vlm3r_vst_132k.json",   data_path: "${DATA_ROOT}/media", tag: 2d}
+vsi_590k:         {annotation_path: "${DATA_ROOT}/train/vsi_590k.json",         data_path: "${DATA_ROOT}/media", tag: 2d}
+mindcube_10k:     {annotation_path: "${DATA_ROOT}/train/mindcube_10k.json",     data_path: "${DATA_ROOT}/media", tag: 2d}
+
+# Temporal dynamics
+mllm4d:           {annotation_path: "${DATA_ROOT}/train/mllm4d.json",           data_path: "${DATA_ROOT}/media", tag: 2d}
+dsr:              {annotation_path: "${DATA_ROOT}/train/dsr.json",              data_path: "${DATA_ROOT}/media", tag: 2d}
+
+# General video
+llava_hound_64k:  {annotation_path: "${DATA_ROOT}/train/llava_hound_64k.json",  data_path: "${DATA_ROOT}/media", tag: 2d}
+cambrian_s_3m_subset: {annotation_path: "${DATA_ROOT}/train/cambrian_s_3m_subset.json", data_path: "${DATA_ROOT}/media", tag: 2d}

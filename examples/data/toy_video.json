@@ -1,0 +1,10 @@
+[
+  {
+    "id": "toy_video_0",
+    "video": "toy_media/frames/clip_000",
+    "conversations": [
+      {"from": "human", "value": "<video>\nThese are frames of a video.\nIs the red square moving to the left or to the right?\nOptions:\nA. left\nB. right\nAnswer with the option's letter from the given choices directly."},
+      {"from": "gpt", "value": "B"}
+    ]
+  }
+]

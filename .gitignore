@@ -1,0 +1,7 @@
+__pycache__/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+examples/toy_media/
+output/

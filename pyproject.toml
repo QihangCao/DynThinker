@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dynthinker"
+version = "0.1.0"
+description = "DynThinker: Spatial-Dynamic Fusion and Decoupled EMA for spatial and dynamic reasoning with Qwen-VL"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT (DynThinker code); third-party files keep their own licenses, see THIRD_PARTY_NOTICES.md" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+]
+dependencies = [
+    # torch>=2.6 is needed to resume Trainer checkpoints with transformers' safe torch.load check.
+    "torch>=2.6",
+    "torchvision",
+    # The Qwen3-VL modeling code is derived from transformers 4.57.0; other versions are untested.
+    "transformers==4.57.0",
+    "accelerate>=1.4.0",
+    "safetensors",
+    "einops",
+    "numpy",
+    "pillow",
+    "pyyaml",
+    "av",
+]
+
+[project.optional-dependencies]
+train = ["deepspeed>=0.16.4", "tensorboard"]
+flash = ["flash-attn>=2.7"]
+eval = ["pandas", "pyarrow"]
+dev = ["pytest"]
+
+[project.scripts]
+dynthinker-train = "dynthinker.train.train:main"
+dynthinker-infer = "dynthinker.infer:main"
+dynthinker-eval = "dynthinker.eval.run:main"
+dynthinker-export-ema = "dynthinker.train.export_ema:main"
+dynthinker-ema-decay = "dynthinker.tools.ema_decay:main"
+
+[tool.setuptools]
+license-files = ["LICENSE", "LICENSES/*", "THIRD_PARTY_NOTICES.md"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"dynthinker.model.vdpm" = ["LICENSE", "LICENSE-VGGT"]
+"dynthinker.model.vggt" = ["LICENSE"]
+"dynthinker.model.vggt.layers" = ["LICENSE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"
