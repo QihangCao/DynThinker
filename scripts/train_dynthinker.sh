@@ -83,7 +83,7 @@ if [[ "$USE_SDF" == "1" ]]; then
         --feature_fusion_method zero
         --cam_merger_type zero
         --geo_cross_attn True
-        --geo_inject_version v32
+        --geo_inject_version v1
         --geo_importance_gate True
         --vdpm_use_decoder_features True
         --vdpm_temporal_mode diag
