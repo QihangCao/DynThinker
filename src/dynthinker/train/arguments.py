@@ -46,7 +46,7 @@ class ModelArguments:
         metadata={"help": "Do not store VDPM weights in saved checkpoints (they must then be passed at load time)"},
     )
     geo_cross_attn: bool = field(default=False, metadata={"help": "Insert SDF modules into the middle LLM layers"})
-    geo_inject_version: str = field(default="v32", metadata={"help": "SDF variant; only 'v32' is supported"})
+    geo_inject_version: str = field(default="v1", metadata={"help": "SDF variant; only 'v1' is supported"})
     geo_importance_gate: bool = field(
         default=True, metadata={"help": "Recorded in the config for compatibility; SDF always uses importance gating"}
     )
