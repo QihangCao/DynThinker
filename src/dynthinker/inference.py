@@ -60,7 +60,7 @@ def prepare_frames(frames: Sequence[Image.Image], patch_size: int, merge_size: i
 _REQUIRED_CONFIG = {
     "use_geometry_encoder": True,
     "geo_cross_attn": True,
-    "geo_inject_version": "v32",
+    "geo_inject_version": "v1",
     "vdpm_use_decoder_features": True,
     "vdpm_concat_encoder_decoder_features": True,
 }
@@ -78,7 +78,7 @@ def check_dynthinker_config(config) -> None:
     }
     if wrong:
         raise ValueError(
-            "This checkpoint is not a DynThinker (VDPM + SDF v32) checkpoint; config has "
+            "This checkpoint is not a DynThinker (VDPM + SDF v1) checkpoint; config has "
             + ", ".join(f"{key}={value!r}" for key, value in wrong.items())
             + ". A plain Qwen3-VL checkpoint cannot be used with this pipeline."
         )
