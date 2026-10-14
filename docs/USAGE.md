@@ -9,7 +9,7 @@
 | Backbone for DynThinker (VDPM + SDF) | **Qwen3-VL**, using Qwen3-VL-8B-Instruct as the base model. |
 | Qwen2.5-VL | D-EMA-only fine-tuning with the stock `transformers` class (`USE_SDF=0`); no SDF. |
 | Geometry encoder | V-DPM dual stream (encoder + "diagonal" decoder, layer offset -2). Every frame is decoded; there is no sparse-decoding option. |
-| SDF variant | `geo_inject_version="v32"` only. Parameter names match the research checkpoints (`...layers.<i>.cross_attn.*`). |
+| SDF variant | `geo_inject_version="v1"` only. Parameter names match the research checkpoints (`...layers.<i>.cross_attn.*`). |
 | DynThinker weights | Not released with this repository. |
 | Training records | Images, frame directories and videos with conversations ([docs/DATA.md](DATA.md)). SPAR-7M `spar_info` markers are **not** drawn; datasets that use them are rejected. |
 
@@ -72,7 +72,7 @@ print(pipe.generate(frames, "How many chairs are in the room? Answer with a numb
   sequence of images; each frame also goes to VDPM.
 - Greedy decoding by default (`--temperature 0`).
 - The pipeline refuses checkpoints that are not DynThinker checkpoints (for example a plain Qwen3-VL
-  checkpoint, or a config without `use_geometry_encoder`, `geo_cross_attn`, `geo_inject_version="v32"`
+  checkpoint, or a config without `use_geometry_encoder`, `geo_cross_attn`, `geo_inject_version="v1"`
   and the dual-stream VDPM flags), checkpoints missing SDF/geometry-merger weights, and checkpoints
   saved without VDPM weights unless `--geometry-encoder-path` (or `DYNTHINKER_VDPM_PATH`) is given.
 - A GPU is expected. The 8B model plus VDPM (~1.2B parameters) does not fit a typical CPU setup
