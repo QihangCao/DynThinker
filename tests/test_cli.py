@@ -32,5 +32,5 @@ def test_train_rejects_missing_dataset_config(tmp_path):
     model_args, data_args, training_args = parser.parse_args_into_dataclasses(
         ["--output_dir", str(tmp_path), "--ema_enable", "True", "--ema_mlp_decay", "0.99", "--report_to", "none"]
     )
-    assert model_args.geo_inject_version == "v32" and model_args.ema_mlp_layer_threshold == 4
+    assert model_args.geo_inject_version == "v1" and model_args.ema_mlp_layer_threshold == 4
     assert data_args.dataset_config is None and training_args.auto_resume

@@ -4,7 +4,7 @@
 <p align="center">
   <a href="assets/DynThinker-preprint.pdf"><img src="assets/badges/paper.svg" height="28" alt="Paper: read the preprint PDF"></a>
   <a href="#paper-and-models"><img src="assets/badges/arxiv.svg" height="28" alt="arXiv: coming soon"></a>
-  <a href="#paper-and-models"><img src="assets/badges/models.svg" height="28" alt="Hugging Face models: coming soon"></a>
+  <a href="https://huggingface.co/lihy285/DynThinker/"><img src="assets/badges/models.svg" height="28" alt="Hugging Face models: available"></a>
 </p>
 
 <p align="center">
@@ -56,7 +56,7 @@ The package pins Transformers to 4.57.0.
 
 ## 🚀 Inference
 
-Use the final `OUTPUT_DIR` from training, or [export an intermediate D-EMA checkpoint](docs/USAGE.md#d-ema). Public model weights are coming soon. If the checkpoint was saved without V-DPM weights, add `--geometry-encoder-path /path/to/vdpm/model.pt`.
+Download the released [DynThinker-Qwen3VL8B weights](https://huggingface.co/lihy285/DynThinker/tree/main/DynThinker-Qwen3VL8B) and set `--model` to the local `DynThinker-Qwen3VL8B` directory. You can also use the final `OUTPUT_DIR` from training, or [export an intermediate D-EMA checkpoint](docs/USAGE.md#d-ema). If the checkpoint was saved without V-DPM weights, add `--geometry-encoder-path /path/to/vdpm/model.pt`.
 
 ```bash
 dynthinker-infer --model /path/to/dynthinker-checkpoint \

@@ -63,9 +63,14 @@ def test_save_and_reload_round_trip(stub_geometry, tmp_path):
     reloaded = stub_geometry.Qwen3VLForConditionalGenerationWithVGGT.from_pretrained(
         tmp_path / "ckpt", attn_implementation="eager"
     ).eval()
-    assert reloaded.config.geo_inject_version == "v32"
+    assert reloaded.config.geo_inject_version == "v1"
+    original_state, reloaded_state = model.state_dict(), reloaded.state_dict()
+    assert original_state.keys() == reloaded_state.keys()
+    for key in original_state:
+        assert torch.equal(original_state[key], reloaded_state[key]), key
     with torch.no_grad():
-        assert torch.equal(reloaded(**copy.deepcopy(inputs)).logits, reference)
+        # CPU kernels can round differently after loading, even with identical weights.
+        torch.testing.assert_close(reloaded(**copy.deepcopy(inputs)).logits, reference, atol=1e-6, rtol=1e-5)
 
     # VDPM weights are loaded explicitly; the research-era keyword fails instead of being absorbed.
     with pytest.raises(TypeError, match="load_vdpm_weights"):
@@ -84,5 +89,5 @@ def test_unsupported_research_options_fail_loudly(stub_geometry, key, value):
     cfg = tiny_config()
     setattr(cfg, key, value)
     setattr(cfg.text_config, key, value)
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=key):
         stub_geometry.Qwen3VLForConditionalGenerationWithVGGT(cfg)

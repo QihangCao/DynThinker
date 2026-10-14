@@ -89,7 +89,7 @@ def tiny_config(depart_smi_token=False, num_layers=8, use_geometry_encoder=True)
         geometry_merger_type="mlp",
         geometry_merger_hidden_dim=32,
         geo_cross_attn=use_geometry_encoder,
-        geo_inject_version="v32",
+        geo_inject_version="v1",
         vdpm_use_decoder_features=True,
         vdpm_temporal_mode="diag",
         vdpm_decoder_layer_offset=-2,
