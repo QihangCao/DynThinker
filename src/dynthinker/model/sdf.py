@@ -1,9 +1,9 @@
 # Copyright (c) 2026 The DynThinker Authors. Licensed under the MIT License.
 """Spatial-Dynamic Fusion (SDF).
 
-This is the interaction module selected by ``geo_inject_version="v32"`` in DynThinker
-checkpoints. Parameter names are kept identical to the original implementation
-(``QwenVGGTInteractionv32``) so that trained checkpoints load without key remapping.
+This is the interaction module selected by ``geo_inject_version="v1"`` in DynThinker
+checkpoints. Its parameter names match the released checkpoint structure (``cross_attn``)
+so trained weights load without key remapping.
 """
 
 import torch
@@ -72,16 +72,16 @@ class SpatialDynamicFusion(nn.Module):
         return torch.tanh(self.gate) * output
 
 
-# Name used by the original implementation.
-QwenVGGTInteractionv32 = SpatialDynamicFusion
+# Release-facing class alias; checkpoint tensors remain registered under `cross_attn`.
+QwenVGGTInteractionv1 = SpatialDynamicFusion
 
-SDF_INJECT_VERSION = "v32"
+SDF_INJECT_VERSION = "v1"
 
 
 def is_sdf_layer(layer_idx: int, num_hidden_layers: int) -> bool:
     """SDF is deployed on the middle LLM layers: quarter < layer_idx < num_layers - quarter.
 
-    This reproduces the placement rule the original code applies to ``v32``.
+    This reproduces the placement rule used by the DynThinker SDF implementation (``v1``).
     """
     quarter_num = num_hidden_layers // 4
     return (layer_idx > quarter_num) and (layer_idx < (num_hidden_layers - quarter_num))
