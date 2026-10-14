@@ -74,7 +74,14 @@ print(pipe.generate(frames, "How many chairs are in the room? Answer with a numb
 
 ## 🛠️ Training
 
-Prepare your data using the [data guide](docs/DATA.md) and [dataset registry template](configs/datasets.example.yaml), then launch training. For SPAR-style annotations, render point/box markers into images and remove `spar_info`, as described in the data guide.
+### Data preparation
+
+- **Annotations:** Download the released training annotation files from [GeoThinker-train](https://huggingface.co/lihy285/GeoThinker/tree/main/train). The files are not copied into this repository.
+- **Images and videos:** Download the media referenced by the annotations from their respective dataset providers; the media files are separate from the annotation files and are not included here.
+- **Configure paths:** Copy [`configs/datasets.example.yaml`](configs/datasets.example.yaml), then set each entry's `annotation_path` to the downloaded annotation file and `data_path` to the media root on your machine. The launcher selects registry entries through `DATASETS`.
+- **SPAR data:** Before training, render point/box markers into the images and remove `spar_info` from the annotations. The loader does not render these markers for you.
+
+See the [data guide](docs/DATA.md) for the record format, media layout, path resolution, and preprocessing details.
 
 ```bash
 export MODEL_PATH=Qwen/Qwen3-VL-8B-Instruct
