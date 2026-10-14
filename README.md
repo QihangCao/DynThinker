@@ -37,7 +37,7 @@ The repository includes the Qwen3-VL-based model, training, D-EMA checkpoint exp
 |---|---|
 | Paper | [Read the preprint (PDF)](assets/DynThinker-preprint.pdf) |
 | arXiv | Coming soon |
-| 🤗 DynThinker model weights | Coming soon |
+| 🤗 DynThinker model weights | [DynThinker-Qwen3VL8B](https://huggingface.co/lihy285/DynThinker/) |
 | Base model | [Qwen3-VL-8B-Instruct](https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct) |
 | Geometry encoder | [V-DPM](https://github.com/eldar/vdpm) |
 
