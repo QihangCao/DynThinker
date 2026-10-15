@@ -3,7 +3,7 @@
 
 <p align="center">
   <a href="assets/DynThinker-preprint.pdf"><img src="assets/badges/paper.svg" height="28" alt="Paper: read the preprint PDF"></a>
-  <a href="#paper-and-models"><img src="assets/badges/arxiv.svg" height="28" alt="arXiv: coming soon"></a>
+  <a href="https://arxiv.org/abs/2610.20598"><img src="assets/badges/arxiv.svg" height="28" alt="arXiv: 2610.20598"></a>
   <a href="https://huggingface.co/lihy285/DynThinker/"><img src="assets/badges/models.svg" height="28" alt="Hugging Face models: available"></a>
 </p>
 
@@ -36,7 +36,7 @@ The repository includes the Qwen3-VL-based model, training, D-EMA checkpoint exp
 | Resource | Link |
 |---|---|
 | Paper | [Read the preprint (PDF)](assets/DynThinker-preprint.pdf) |
-| arXiv | Coming soon |
+| arXiv | [2610.20598](https://arxiv.org/abs/2610.20598) |
 | 🤗 DynThinker model weights | [DynThinker-Qwen3VL8B](https://huggingface.co/lihy285/DynThinker/) |
 | Base model | [Qwen3-VL-8B-Instruct](https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct) |
 | Geometry encoder | [V-DPM](https://github.com/eldar/vdpm) |
@@ -124,7 +124,10 @@ VSI-Bench videos follow `<media-root>/<dataset>/<scene_name>.mp4`. Both `vsibenc
   title={DynThinker: Unifying Static 3D and Dynamic 4D Spatial Reasoning},
   author={Qihang Cao and Haoyuan Li and Zihan Guo and Sensen Gao and Zihui Gao and Huixin Zhang and Fan He and Jianhua Han and Hang Xu and Xiaodan Liang and Jia-Wang Bian},
   year={2026},
-  note={Preprint}
+  eprint={2610.20598},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.20598}
 }
 ```
 
